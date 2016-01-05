@@ -1,20 +1,9 @@
 // WRITE YOUR CODE IN script.js, NOT HERE
 
-// This function searches for photos on instagram with tags
-// that match the search query.
-//
-// The first argument should be the search query entered by
-// the user. The second argument should be the number of results
-// you want from the API (start with 1 to make it easier).
-//
-// The third argument should be a function to run when results
-// are returned from the Instagram API. These are known as
-// "callbacks". The function should expect to receive an array
-// of results as the first argument, so something like:
-//
-//    function(results) {
-//      // do something
-//    }
+/* This file provides this global IG object which enables interaction with the 
+ * Instagram rest API
+ */
+
 function searchInstagram(clientID, query, count, callback) {
   // first we make the search query into a tag
   var tag = query.toLowerCase()
@@ -39,7 +28,7 @@ function callInstagramAPI(clientID, endpoint, params, callback) {
       // this block gets called if the API call works or fails!
       function(response) {
         if (response.meta.error_message) {
-          alert(response.meta.error_message);
+          console.error(response.meta.error_message);
         } else if (response.data) {
           callback(response.data);
         }
